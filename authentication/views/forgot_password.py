@@ -4,10 +4,10 @@ from rest_framework.response import Response
 
 
 class ForgotPassword(APIView):
-    def post(self, request, *args, **kwargs):
-        email, username = request.data
 
-        print(email)
-        print(username)
+    def post(self, request, format=None):
 
-        return Response({ 'msg': 'Deu bomm, ou quase' })
+        email = request.data['email']
+        username = request.data['username']
+
+        return Response({ 'msg': f'{email} {username}'})
