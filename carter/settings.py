@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # projetct apps
 
     # thirty part apps
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
