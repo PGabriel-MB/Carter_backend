@@ -8,6 +8,20 @@ class ForgotPassword(APIView):
     def post(self, request, format=None):
 
         email = request.data['email']
-        username = request.data['username']
 
-        return Response({ 'msg': f'{email} {username}'})
+        if not email:
+            return Response(
+                {'error': 'O campo e-mail é obrigatório!'},
+                status=400
+            )
+        
+        user = User.objects.filter(email=email).first()
+
+        if not user:
+            return Response(
+                {'error': 'Este usuário não existe!'}
+            )
+
+        
+
+        return Response({ 'msg': f'{email}'})
