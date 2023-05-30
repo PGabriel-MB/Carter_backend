@@ -28,7 +28,6 @@ class CarterUser(Person):
         on_delete=models.SET_NULL,
         blank=True
     )
-
     gender = models.CharField(
         _('gender'),
         choices=GENDER_CHOICES,
@@ -36,12 +35,14 @@ class CarterUser(Person):
         null=True,
         blank=True
     )
-
     user_type = models.CharField(
         _('user type'),
         choices=CARTER_USER_TYPES,
         max_length=10
     )
+    profile_img = models.URLField(_('profile image'), null=True, blank=True)
+    contact = models.ForeignKey('base.Contact')
+    address = models.ForeignKey('base.Address')
 
     def __str__(self):
         return f'{self.name}'

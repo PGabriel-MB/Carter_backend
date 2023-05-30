@@ -35,8 +35,6 @@ class Contact(Base):
     email = models.EmailField(_('email'))
     linkedIn = models.URLField('LinkdIn', null=True, blank=True)
     site = models.URLField(_('site'), null=True, blank=True)
-    carter_user = models.OneToOneField(
-        'authentication.CarterUser', related_name='addresses')
 
     class Meta:
         verbose_name = _('Contact')
@@ -60,9 +58,6 @@ class Address(Base):
     country = models.CharField(_('country'), max_length=20)
     complement = models.CharField(
         _('complement'), max_length=100, null=True, blank=True)
-
-    carter_user = models.OneToOneField(
-        'authentication.CarterUser', related_name='addresses')
 
     class Meta:
         verbose_name = _('Address')
