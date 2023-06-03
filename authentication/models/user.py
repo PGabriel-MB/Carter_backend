@@ -12,7 +12,7 @@ class CarterUser(Person):
     )
 
     CARTER_USER_TYPES = (
-        ('COMPANY', 'company')
+        ('COMPANY', 'company'),
         ('ADMIN', _('adminstrator')),
         ('SELLER', _('seller'))
     )
@@ -41,8 +41,10 @@ class CarterUser(Person):
         max_length=10
     )
     profile_img = models.URLField(_('profile image'), null=True, blank=True)
-    contact = models.ForeignKey('base.Contact')
-    address = models.ForeignKey('base.Address')
+    contact = models.ForeignKey(
+        'base.Contact', on_delete=models.SET_NULL, null=True)
+    address = models.ForeignKey(
+        'base.Address', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f'{self.name}'

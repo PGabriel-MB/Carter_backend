@@ -22,8 +22,8 @@ class Person(Base):
     birthdate = models.DateTimeField(_('birthdate'))
     first_name = models.CharField(_('first name'), max_length=20)
     last_name = models.CharField(_('last name'), max_length=20)
-    cpf = models.CharField('CPF', min_length=11, null=True, blank=True)
-    rg = models.CharField('RG', min_length=10, null=True, blank=True)
+    cpf = models.CharField('CPF', max_length=11, null=True, blank=True)
+    rg = models.CharField('RG', max_length=10, null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -43,10 +43,11 @@ class Contact(Base):
 
 class Address(Base):
     ADDRESS_TYPES = (
-        ('HOME', _('home address'))
+        ('HOME', _('home address')),
         ('BUSINESS', _('business address')),
         ('TEMP', _('temporary address')),
     )
+
     address_type = models.CharField(
         _('address type'), choices=ADDRESS_TYPES, max_length=9)
     street = models.CharField(_('street'), max_length=50)
@@ -54,7 +55,7 @@ class Address(Base):
     number = models.CharField(_('number'), max_length=6)
     zip_code = models.CharField(_('zip code'), max_length=7)
     city = models.CharField(_('city'), max_length=30)
-    state = models.CharField(_('state'), max_length=30)
+    state = models.CharField(_('state'), max_length=4)
     country = models.CharField(_('country'), max_length=20)
     complement = models.CharField(
         _('complement'), max_length=100, null=True, blank=True)

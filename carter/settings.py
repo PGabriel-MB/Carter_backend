@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # project apps
     'authentication',
     'base',
-    'admin',
+    'administration',
 
     # thirty part apps
     'rest_framework',

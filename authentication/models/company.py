@@ -12,9 +12,12 @@ class Company(Base):
     corporate_name = models.CharField(_('corporate name'), max_length=50)
     company_logo = models.URLField(_('company logo'), null=True, blank=True)
 
-    carter_user = models.OneToOneField(CarterUser, related_name='company_user')
-    contact = models.ForeignKey('base.Contact')
-    address = models.ForeignKey('base.Address')
+    carter_user = models.OneToOneField(
+        CarterUser, related_name='company_user', on_delete=models.SET_NULL, null=True, blank=True)
+    contact = models.ForeignKey(
+        'base.Contact', on_delete=models.SET_NULL, null=True)
+    address = models.ForeignKey(
+        'base.Address', on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = _('Company')
