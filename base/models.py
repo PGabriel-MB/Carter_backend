@@ -53,7 +53,7 @@ class Address(Base):
     street = models.CharField(_('street'), max_length=50)
     neighborhood = models.CharField(_('neighborhood'), max_length=30)
     number = models.CharField(_('number'), max_length=6)
-    zip_code = models.CharField(_('zip code'), max_length=7)
+    zip_code = models.CharField(_('zip code'), max_length=9)
     city = models.CharField(_('city'), max_length=30)
     state = models.CharField(_('state'), max_length=4)
     country = models.CharField(_('country'), max_length=20)
